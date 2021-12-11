@@ -324,7 +324,7 @@ def winner(player_turn):
         elif board['row1'][13] == player1['token'] and board['row2'][17] == player1['token'] and board['row3'][21] == player1['token']:
             #Diagonal \
             return True
-        elif board['row1'][21] == player1['token'] and board['row2'][17] == player1['token'] and board['row3'][17] == player1['token']:
+        elif board['row1'][21] == player1['token'] and board['row2'][17] == player1['token'] and board['row3'][13] == player1['token']:
             #Diagonal /
             return True
         else:
@@ -351,7 +351,7 @@ def winner(player_turn):
         elif board['row1'][13] == player2['token'] and board['row2'][17] == player2['token'] and board['row3'][21] == player2['token']:
             #Diagonal \
             return True
-        elif board['row1'][21] == player2['token'] and board['row2'][17] == player2['token'] and board['row3'][17] == player2['token']:
+        elif board['row1'][21] == player2['token'] and board['row2'][17] == player2['token'] and board['row3'][13] == player2['token']:
             #Diagonal /
             return True
         else:
