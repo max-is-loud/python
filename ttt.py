@@ -542,18 +542,13 @@ def main_loop():
             if turn <= 3:
                 check_turn()
                 play_game(player_turn)
-            elif turn >= 4:
+            elif turn in range(4,9):
                 check_turn()
                 play_game(player_turn)
                 if winner(player_turn):
                     game_over(player_turn)
             elif turn == 9:
-                check_turn()
-                take_turn(player_turn)
-                if winner(player_turn):
-                    game_over(player_turn)
-                else:
-                    game_over('stalemate')
+                game_over('stalemate')
 
 main_loop()
 print('Good bye!')
