@@ -195,7 +195,6 @@ if __name__ == '__main__':
     tbl = Table()
     game_deck = Deck()
     game_deck.shuffle()
-    game_deck.shuffle()
     player1.hand, player2.hand = game_deck.deal_cards()
     draw_header()
     while len(player1.hand) != 0 and len(player2.hand) != 0:
