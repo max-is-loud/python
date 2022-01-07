@@ -52,15 +52,6 @@ class Player:
         print(f"{self.name}'s hand contains {len(self.hand)} cards, and consists of:\n")
         for card in self.hand:
             print(f'{card}')
-
-    def __gt__(self, other):
-        val1, val2 = self.__evaluate(other)
-
-        if val1 > val2:
-            return True
-        else:
-            return False
-
 class Card:
 
     def __init__(self, suit, rank):
