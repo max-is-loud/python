@@ -18,7 +18,6 @@ class Card:
     def __str__(self) -> str:
         return self.rank + " of " + self.suit
 
-
 class Deck:
     """Creates an instance of a Deck object containing 52 instances of Card
     class by looping through the rank list for each suit in the suit list
@@ -38,25 +37,88 @@ class Deck:
         
         shuffle(self.cards)
 
+    def draw_card(self) -> Card:
+        return self.cards.pop()
+
 
 class Player:
     """
     Takes in a passed in name, and initializes a player object with a starting
     balance of $100.00, and an empty hand.
     """
-    def __init__(self,name) -> None:
+    def __init__(self, name, balance=0) -> None:
         self.name = name
-        if self.name != 'dealer':
-            self.balance = 100.00
-        self.hand = []
         self.stand = False
-        self.bet = None
+        self.bust = False
+        self.blackjack = False
+        self._bet = None
+        self._balance = balance
+        self._hand = []
     
-    def __int__(self) -> list:
-        return sum(self.hand)
+    def show_hand(self) -> str:
+        hand_list = []
+        for card in self._hand:
+            hand_list.append(str(card))
+        return ', '.join(hand_list)
     
     def hand_value(self) -> int:
-        value = 0
-        for card in self.hand:
-            value += card.value
-        return value
+        self.value = 0
+        for card in self._hand:
+            if card.value == 11:
+                if (self.value + card.value) > 21:
+                    self.value += 11
+                else:
+                    self.value += 1
+            else:
+                self.value += card.value
+        return self.value
+        
+    def __str__(self):
+        cards_list = [str(card) for card in self._hand]
+        return ', '.self._hand.join()
+        
+
+    @property
+    def hand(self):
+        return self._hand
+
+    @hand.setter
+    def hand(self, card):
+        self._hand.append(card)
+
+    @hand.getter
+    def hand(self):
+        return self._hand
+    
+    @hand.deleter
+    def hand(self):
+        del self._hand
+
+    @property
+    def bet(self):
+        return self._bet
+
+    @bet.setter
+    def bet(self, amount):
+        """If bet is greater than player balance, an error is thrown"""
+        if amount > self._balance:
+            raise ValueError("Insufficient Balance")
+        
+        self._balance = self.balance - amount
+        self._bet = amount
+
+    @bet.deleter
+    def bet(self):
+        del self._bet
+
+    @property
+    def balance(self):
+        return self._balance
+
+    @balance.setter
+    def balance(self, amount):
+        self._balance = amount
+
+    @balance.deleter
+    def balance(self):
+        del self._balance
