@@ -5,7 +5,7 @@ class Card:
     Card class, is used by the Deck class to create individual card objects
     to populate a created Deck object.
     """ 
-    def __init__(self, suit, rank) -> None:
+    def __init__(self, suit, rank):
         values = {
         'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7,
         'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10,
@@ -15,14 +15,14 @@ class Card:
         self.rank = rank
         self.value = values[rank]
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.rank + " of " + self.suit
 
 class Deck:
     """Creates an instance of a Deck object containing 52 instances of Card
     class by looping through the rank list for each suit in the suit list
     """
-    def __init__(self) -> None:
+    def __init__(self):
         self.cards = []
         suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
         ranks = (
@@ -37,7 +37,7 @@ class Deck:
         
         shuffle(self.cards)
 
-    def draw_card(self) -> Card:
+    def draw_card(self):
         return self.cards.pop()
 
 
@@ -46,7 +46,7 @@ class Player:
     Takes in a passed in name, and initializes a player object with a starting
     balance of $100.00, and an empty hand.
     """
-    def __init__(self, name, balance=0) -> None:
+    def __init__(self, name, balance=0):
         self.name = name
         self.stand = False
         self.bust = False
@@ -55,13 +55,13 @@ class Player:
         self._balance = balance
         self._hand = []
     
-    def show_hand(self) -> str:
+    def show_hand(self):
         hand_list = []
         for card in self._hand:
             hand_list.append(str(card))
         return ', '.join(hand_list)
     
-    def hand_value(self) -> int:
+    def hand_value(self):
         self.value = 0
         for card in self._hand:
             if card.value == 11:
