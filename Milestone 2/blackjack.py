@@ -28,7 +28,7 @@ def draw_screen(mode="no_hand", player=None):
         "title": "Blackjack",
         "tag1": "Written by Maxime Langlois-Morin.",
         "tag2": "Milestone Project 2 - 2022 Complete Python Bootcamp From Zero to Hero in Python by Pieran Data",
-        "date": f"January 23rd 2022 - Ver 0.1 {get_terminal_size()[1]}",
+        "date": "February 1st 2022 - Ver 0.3",
     }
 
     def clear_console():
@@ -250,7 +250,7 @@ def draw_screen(mode="no_hand", player=None):
                     players[f"player_{x}"].hand_value() < players["dealer"].hand_value()
                 ):
                     print(
-                        f'{players[f"player_{x}"].name}\'s hand loses. Bet of ${players[f"player_{x}"].bet} lost.\nBalance: ${players[f"player_{x}"].balance}'
+                        f'{players[f"player_{x}"].name}\'s hand loses. Bet of ${players[f"player_{x}"].bet} lost.\nBalance: ${players[f"player_{x}"].balance}\n'
                     )
                     lines += 3
 
@@ -638,6 +638,7 @@ def eliminate():
             continue
         else:
             new_players[f'player_{counter}'] = players[key]
+            counter += 1
     return new_players
 
 

@@ -27,11 +27,7 @@ class Card:
         self.value = values[rank]
 
     def __str__(self):
-        if self.face_up == True:
-            return self.rank + " of " + self.suit
-        else:
-            return "*****"
-
+        return self.rank + " of " + self.suit
 
 class Deck:
     """Creates an instance of a Deck object containing 52 instances of Card
